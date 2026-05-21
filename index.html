@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Museum - Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --accent-gold: #C9A96E;
+            --accent-light: #D4B87A;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+            border: 1px solid rgba(201, 169, 110, 0.08);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .app-icon {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+        
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            object-fit: cover;
+            box-shadow: 
+                0 12px 40px rgba(201, 169, 110, 0.25),
+                0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .tagline {
+            color: var(--accent-gold);
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .section {
+            margin-bottom: 32px;
+        }
+        
+        h2 {
+            font-size: 20px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 16px;
+            color: var(--accent-gold);
+            margin: 20px 0 12px 0;
+            font-weight: 600;
+        }
+        
+        .intro-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card {
+            background: rgba(10, 10, 10, 0.6);
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(201, 169, 110, 0.08);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .feature-card:hover {
+            transform: translateX(4px);
+            border-color: rgba(201, 169, 110, 0.2);
+        }
+        
+        .feature-card h4 {
+            color: var(--text-primary);
+            font-size: 15px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            color: var(--text-secondary);
+            font-size: 14px;
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.05);
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+        
+        .faq-item {
+            background: rgba(10, 10, 10, 0.6);
+            padding: 18px 20px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(201, 169, 110, 0.08);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .faq-item:hover {
+            transform: translateX(4px);
+            border-color: rgba(201, 169, 110, 0.2);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-light) 100%);
+            color: #1a1a1a;
+            padding: 32px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(201, 169, 110, 0.2);
+        }
+        
+        .contact-box h2 {
+            color: #1a1a1a;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        
+        .contact-box p {
+            color: rgba(26, 26, 26, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .email-link {
+            display: inline-block;
+            background: var(--bg-dark);
+            color: var(--accent-gold);
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        
+        .email-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            background: var(--bg-card);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(201, 169, 110, 0.15);
+        }
+        
+        .footer p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        
+        .icon {
+            font-size: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+            
+            .app-icon {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-icon">
+                <img src="logo.png" alt="Camera Museum App Icon">
+            </div>
+            <h1>Camera Museum</h1>
+            <p class="subtitle">A Curated Collection for Camera Enthusiasts</p>
+            <p class="tagline">Explore · Compare · Discover</p>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">📷</span> About Camera Museum</h2>
+            <p class="intro-text">
+                Camera Museum is the ultimate reference app for photography enthusiasts, collectors, and gear lovers. Browse approximately 200 camera bodies and 345 lenses across film, digital, and instant formats, explore rare limited-edition models, compare specs side-by-side, and get personalized buying recommendations—all in one beautifully designed app.
+            </p>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">✨</span> Key Features</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🏛️ Camera Museum</h4>
+                    <p>Browse approximately 200 camera bodies and 345 lenses across Film, Digital, and Instant formats. Rich detail pages with specs, history, sensor info, video capabilities, and more.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>👑 Limited Edition Museum</h4>
+                    <p>Discover rare and legendary limited-edition cameras with full details, market values, and release history. From Leica specials to Hasselblad masterpieces.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>⚖️ Compare Two Cameras</h4>
+                    <p>Side-by-side comparison of any two cameras. Compare specs, sensor size, video features, battery life, and weight in an elegant split view.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🛒 Premium Buying Guides</h4>
+                    <p>Answer a few questions about your genre, brand preference, and budget. Get personalized camera recommendations tailored to your needs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>📚 Brand Encyclopedia</h4>
+                    <p>Deep-dive into 9 major camera brands. Learn about their history, philosophy, and iconic camera lines.</p>
+                </div>
+            </div>
+            
+            <h3>Premium Features (One-Time Unlock)</h3>
+            <ul class="feature-list">
+                <li>Full access to Limited Edition Museum details and market values</li>
+                <li>Compare any two cameras side-by-side without restrictions</li>
+                <li>Complete Buying Guide results with personalized recommendations</li>
+                <li>All future premium features included</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">❓</span> Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How does the Pro Unlock work?</div>
+                <div class="faq-answer">Camera Museum offers a one-time non-consumable in-app purchase that permanently unlocks all premium features. Once purchased, the unlock is tied to your Apple ID and works across all your devices. You can restore your purchase anytime.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">I bought the Pro Unlock but features are still locked. What should I do?</div>
+                <div class="faq-answer">Tap the "Restore Purchases" button in the Members tab or on the paywall. This will sync your purchase history with the App Store and unlock all features. Make sure you're signed in with the same Apple ID used for the original purchase.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I use the app offline?</div>
+                <div class="faq-answer">Yes! All camera data, brand information, and comparison tools work completely offline. No internet connection is required to browse the museum or use premium features after unlocking.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How often is the camera database updated?</div>
+                <div class="faq-answer">We regularly update the camera database with new releases, price adjustments, and additional historical models. Updates are delivered through app updates on the App Store.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is my purchase shared with Family Sharing?</div>
+                <div class="faq-answer">Yes! If Family Sharing is enabled for your Apple ID, the Pro Unlock can be shared with family members. Each family member will need to tap "Restore Purchases" on their device to activate it.</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🔒</span> Privacy Policy</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Information Collection and Use</div>
+                <div class="faq-answer">Camera Museum does not collect, store, or transmit any personal user data. The app functions entirely as a reference tool. All content is stored locally on your device.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">In-App Purchases</div>
+                <div class="faq-answer">All in-app purchases are processed securely through Apple App Store. We do not have access to your payment information. Your purchase status is verified cryptographically by Apple and cached locally on your device.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Local Storage</div>
+                <div class="faq-answer">The app stores your purchase status locally using Apple's standard UserDefaults system. This data never leaves your device and is used solely to determine whether premium features should be unlocked.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Third-Party Services</div>
+                <div class="faq-answer">We do not use any third-party analytics, advertising, or tracking services. Your use of the app is completely private.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Changes to This Privacy Policy</div>
+                <div class="faq-answer">We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Contact Us</div>
+                <div class="faq-answer">If you have any questions about this Privacy Policy, please contact us at ardisliu@hotmail.com.</div>
+            </div>
+            
+            <p style="color: var(--text-muted); font-size: 13px; margin-top: 16px;">Last updated: May 2026</p>
+        </div>
+        
+        <div class="section">
+            <div class="contact-box">
+                <h2><span class="icon">📧</span> Contact Support</h2>
+                <p>Have questions, feedback, or need assistance with the app? We're here to help!</p>
+                <a href="mailto:ardisliu@hotmail.com" class="email-link">Email Support</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 Camera Museum. All rights reserved.</p>
+            <p>Made with 📸 for Camera Enthusiasts</p>
+        </div>
+    </div>
+</body>
+</html>
